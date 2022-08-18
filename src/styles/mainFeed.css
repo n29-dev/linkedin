@@ -1,0 +1,114 @@
+/* Add post box */
+.mainFeed__container {
+    padding: 20px;
+}
+.addPost__container {
+    background: #fff;
+    padding: 14px 20px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+}
+.addPost__input__avatar__container {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 10px;
+}
+.addPost__avatar__container div {
+    width: 50px;
+    height: 50px;
+}
+.addPost__inputBox__container {
+    align-self: stretch;
+    border: 1px solid rgba(0,0,0,.6);
+    border-radius: 30px;
+    display: inline-grid;
+    padding: 0px 20px;
+}
+.addPost__inputBox__container input[type="text"] {
+    border: 0;
+    outline: 0;
+    font-size: 16px;
+}
+
+.addPost__options__container {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.addPost__options__container .button {
+    align-items: center;
+    justify-content: start;
+}
+
+.addPost__options__container .button .button__title {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(0,0,0,.6);
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+/* Slider */
+
+.mainFeed__slider__container {
+    background: #fff;
+    border: 1px solid lightgray;
+    margin-top: 20px;
+    border-radius: 10px;
+    padding: 25px;
+}
+
+
+.mainFeed__slider__container h2 {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.newsFeedSlide__container {
+    border: 1px solid lightgray;
+    border-radius: 10px;
+}
+
+.newsFeedSlide__container img {
+    border-radius: 10px;
+}
+
+.newsFeedSlide__container p {
+    font-size: 17px;
+    line-height: 24px;
+    padding: 0px 20px;
+}
+
+.newsFeedSlide__container .button {
+    background: #0a66c2;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 30px;
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.newsFeedSlide__container .button .button__title {
+    line-height: 22px;
+}
+
+.mainFeed__slider__container .swiper-button-prev, .mainFeed__slider__container .swiper-button-next {
+    background: rgba(0,0,0,.5);
+    width: 32px;
+    height: 32px;
+    border-radius: 20px;
+    transition: .3s ease;
+}
+.mainFeed__slider__container .swiper-button-prev:hover, .mainFeed__slider__container .swiper-button-next:hover{
+    background: rgba(0,0,0,.7);
+}
+
+.mainFeed__slider__container .swiper-button-next:after, .mainFeed__slider__container  .swiper-button-prev:after {
+    font-size: 15px;
+    color: #fff;
+}

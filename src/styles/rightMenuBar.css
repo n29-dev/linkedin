@@ -1,0 +1,65 @@
+.rightMenuBar {
+    width: 25vw;
+    height: calc(100vh - 57px);
+    background: #fff;
+    padding: 10px;
+    border: 1px solid lightgray;
+    border-radius: 10px 0px 0px 10px;
+}
+.rightMenuBar h2 {
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 28px;
+    margin-bottom: 10px;
+    padding-left: 4px;
+}
+.rightMenuBar-inner {
+    overflow-y: scroll;
+    height: 100%;
+}
+
+.rightMenuBar__single__group {
+    margin-bottom: 20px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+}
+
+.rightMenuBar__single__group h4 {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    padding: 10px 20px;
+    border-bottom: 1px solid lightgray;
+}
+
+.rightMenuBar__single__group__inner {
+    padding: 10px;
+}
+.rightMenuBar__single__group__inner.product__icons{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    align-items: self-start;
+    row-gap: 20px;
+}
+
+.service__links .button span {
+    display: block;
+}
+
+.service__links .button .button__title {
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.service__links .button .button__title__second {
+    font-size: 12px;
+}
+
+.service__links .button {
+    width: 100%;
+    justify-content: start;
+    margin-bottom: 10px;
+}
+.service__links .rightMenuBar__single__group__inner {
+    padding-left: 20px;
+}

@@ -1,0 +1,140 @@
+/* Left sidebar top */
+.leftSidebar__top {
+    margin-top: 20px;
+    background: #fff;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+}
+
+.user__cover__photo {
+    border-radius: 10px 10px 0px 0px;
+}
+
+.user__avatar {
+    display: flex;
+    justify-content: center;
+    margin-top: -30px;
+    margin-bottom: 15px;
+}
+
+.user__avatar__icon div {
+    width: 60px;
+    height: 60px;
+}
+
+.user__name__desg__wrap {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.user__name__desg__wrap h3 {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+}
+
+
+.user__name__desg__wrap p {
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.personal__info__card__button__group {
+    padding-top: 10px;
+    border-top: 1px solid whitesmoke;
+}
+
+.personal__info__card__button__group a {
+    text-decoration: none;
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.6);
+    line-height: 20px;
+    padding: 0px 10px;
+}
+
+.personal__info__card__button__group a:hover {
+    background: whitesmoke;
+}
+
+.personal__info__card__button__group a span {
+    display: block;
+}
+
+.user__connections__link span:last-child {
+    color: rgba(0, 0, 0, 0.9);
+}
+
+.user__viewedProfile__link {
+    margin: 10px 0px;
+}
+
+.leftSidebar__getPremium_link span:first-child {
+    font-weight: 400;
+}
+
+.leftSidebar__getPremium_link span:last-child {
+    color: rgba(0, 0, 0, .9);
+    text-decoration: underline;
+}
+.button.button__inline__icon .button__title {
+    margin-bottom: 7px;
+}
+.personal__info__card__button__group .button.button__inline__icon {
+    padding: 10px;
+    border-top: 1px solid whitesmoke;
+    margin-top: 11px;
+}
+
+/* Left sidebar bottom */
+
+.leftSidebar__bottom {
+    background: #fff;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.leftSidebar__bottom h3 {
+    padding: 10px 10px 0px 10px;
+    margin-bottom: 10px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: rgba(0,0,0,.9);
+    text-decoration: none;
+}
+
+.leftSidebar__tag_container {
+    margin-top: 15px;
+}
+
+.leftSidebar__bottom .button.button__inline__icon .button__title {
+    color: rgba(0,0,0,.6) !important;
+}
+
+.catagory__link a {
+    text-decoration: none;
+}
+
+.seeAll__link {
+    font-weight: 500;
+    text-decoration: none;
+    padding: 10px;
+    color: rgba(0,0,0,.6);
+    margin: 0px 0px;
+    line-height: 28px;
+}
+
+.discoverMore__button {
+    display: block;
+    padding: 10px 10px;
+    font-weight: 500;
+    text-decoration: none;
+    text-align: center;
+    border-top: 1px solid lightgray;
+    margin-top: 10px;
+    color: rgba(0,0,0,0.6);
+}
