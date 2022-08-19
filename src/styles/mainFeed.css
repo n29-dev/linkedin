@@ -112,3 +112,7 @@
     font-size: 15px;
     color: #fff;
 }
+
+.mainFeed__slider__container .swiper-button-next.swiper-button-disabled, .mainFeed__slider__container .swiper-button-prev.swiper-button-disabled{
+    display: none;
+}
