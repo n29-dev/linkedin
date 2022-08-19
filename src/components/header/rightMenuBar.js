@@ -8,8 +8,8 @@ import {
   Store,
   WifiTetheringError,
 } from "@mui/icons-material";
-import "../styles/rightMenuBar.css";
-import Button from "./Button";
+import "../../styles/rightMenuBar.css";
+import Button from "../globals/Button";
 
 function RightMenuBar() {
   return (

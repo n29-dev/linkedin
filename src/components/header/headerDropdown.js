@@ -1,9 +1,9 @@
 import { Launch } from "@mui/icons-material";
 import { Avatar } from "@mui/material";
 import React from "react";
-import Button from "./Button";
-import List from "./List";
-import "../styles/headerDropdown.css";
+import Button from "../globals/Button";
+import List from "../globals/List";
+import "../../styles/headerDropdown.css";
 
 function HeaderDropdown() {
   return (

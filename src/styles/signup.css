@@ -1,0 +1,113 @@
+.signup__page__container {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    justify-content: center;
+    background: #fff;
+    align-items: center;
+}
+
+.logo-container {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    padding-left: 40px;
+    padding-top: 40px;
+}
+
+.signup__form__container {
+    width: 352px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 24px;
+    border-radius: 8px;
+    margin: 0 auto;
+    background: #fff;
+}
+
+.signup__form__container h2 {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 42px;
+}
+
+.signup__form__container p {
+    font-size: 14px;
+    margin-top: 7px;
+}
+
+form.signup__form {
+    margin-top: 10px;
+}
+
+.signup__form input {
+    display: inline-block;
+    outline: 0;
+    width: 100%;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.9);
+    height: 52px;
+    padding: 12px 12px 6px;
+    border-radius: 4px;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+.signup__form button {
+    border: 0;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 600;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 24px;
+    text-align: center;
+    transition-duration: 167ms;
+    vertical-align: middle;
+    background: #0A66C2;
+    border-radius: 28px;
+    width: 100%;
+}
+
+.signup__form button:hover {
+    background: #004182 !important;
+}
+.signup__form a {
+    font-size: 16px;
+    display: inline-block;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    font-weight: 500;
+    color: #0a66c2;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.signup_link {
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.signup_link a {
+    color: #0a66c2;
+    text-decoration: none;
+    font-weight: 600;
+    padding-left: 5px;
+}
+
+.password__field__wrap {
+    position: relative;
+}
+
+.password__field__wrap span {
+    position: absolute;
+    top: 34px;
+    right: 15px;
+}
+
+.password__field__wrap input {
+    padding-right: 38px;
+}

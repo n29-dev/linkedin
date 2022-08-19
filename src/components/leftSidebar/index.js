@@ -1,7 +1,7 @@
 import { Avatar } from "@mui/material";
-import Button from "./Button";
+import Button from "../globals/Button";
 import React from "react";
-import '../styles/leftSidebar.css';
+import '../../styles/leftSidebar.css';
 import { Tag, TurnedIn } from "@mui/icons-material";
 
 

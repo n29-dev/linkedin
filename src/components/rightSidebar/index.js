@@ -1,9 +1,9 @@
 import { Avatar,  } from '@mui/material';
 import {Add} from '@mui/icons-material';
 import React from 'react'
-import Button from './Button';
-import '../styles/rightSidebar.css';
-import Banner from '../assets/images/hiring.png'
+import Button from '../globals/Button';
+import '../../styles/rightSidebar.css';
+import Banner from '../../assets/images/hiring.png'
 
 function RightSidebar() {
   return (

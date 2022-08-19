@@ -1,8 +1,8 @@
 import React from "react";
-import "../styles/header.css";
+import "../../styles/header.css";
 import SearchIcon from "@mui/icons-material/Search";
-import Logo from "../assets//icons/linkedin.png";
-import HeaderOption from "./HeaderOption";
+import Logo from "../../assets//icons/linkedin.png";
+import HeaderOption from "./headerOption";
 import {
   Home,
   SupervisorAccount,
@@ -11,8 +11,8 @@ import {
   Notifications,
   Dialpad,
 } from "@mui/icons-material";
-import HeaderDropdown from "./HeaderDropdown";
-import RightMenuBar from "./RightMenuBar";
+import HeaderDropdown from "./headerDropdown";
+import RightMenuBar from "./rightMenuBar";
 
 function Header() {
   return (

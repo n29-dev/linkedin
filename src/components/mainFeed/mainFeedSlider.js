@@ -3,11 +3,11 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import MainFeedSlide from './MainFeedSlide';
-import Banner1 from '../assets/images/banner_1.png'
-import Banner3 from '../assets/images/banner_3.png'
-import Banner4 from '../assets/images/banner_4.png'
-import Banner5 from '../assets/images/banner_5.png'
+import MainFeedSlide from './mainFeedSlide';
+import Banner1 from '../../assets/images/banner_1.png'
+import Banner3 from '../../assets/images/banner_3.png'
+import Banner4 from '../../assets/images/banner_4.png'
+import Banner5 from '../../assets/images/banner_5.png'
 
 function MainFeedSlider() {
   return (

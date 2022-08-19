@@ -1,8 +1,9 @@
 import "./App.css";
-import Header from "./components/Header";
-import RightSidebar from "./components/RightSidebar";
-import LeftSidebar from "./components/LeftSidebar";
-import MainFeed from "./components/MainFeed";
+import Header from "./components/header";
+import RightSidebar from "./components/rightSidebar";
+import LeftSidebar from "./components/leftSidebar";
+import MainFeed from "./components/mainFeed";
+import Signup from "./components/signup";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <RightSidebar />
         </main>
       </div>
+      {/* <Signup/> */}
     </div>
   );
 }

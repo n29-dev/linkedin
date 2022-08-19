@@ -1,7 +1,7 @@
-import '../styles/mainFeed.css';
-import AddPost from './AddPost';
-import MainFeedSlider from './MainFeedSlider';
-import { db } from '../firebase';
+import '../../styles/mainFeed.css';
+import AddPost from './addPost';
+import MainFeedSlider from './mainFeedSlider';
+import { db } from '../../firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { useEffect, useRef } from 'react';
 import React from 'react';

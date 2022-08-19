@@ -1,5 +1,5 @@
 import React from 'react'
-import Button from './Button'
+import Button from '../globals/Button'
 import { Avatar } from '@mui/material'
 import { CalendarMonth, InsertPhoto, PostAdd, SmartDisplay } from '@mui/icons-material'
 

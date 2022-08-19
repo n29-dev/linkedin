@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
-import "../styles//headerOption.css";
+import React, { useEffect, useState } from "react";
+import "../../styles/headerOption.css";
 import { ArrowDropDown } from "@mui/icons-material";
-import useClickOutside from "../hooks/useClickOutside";
+import useClickOutside from "../../hooks/useClickOutside";
 
 function HeaderOption({ Icon, title, avatar, dropdown, Content, toggleClass = '', classes = ''}) {
   const [showDropdown, setShowDropdown] = useState(false);

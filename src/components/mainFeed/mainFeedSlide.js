@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from './Button';
+import Button from '../globals/Button';
 
 function NewsFeedSlide({Banner, paragraph, buttonText}) {
   return (
