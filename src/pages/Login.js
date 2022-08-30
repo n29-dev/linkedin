@@ -1,14 +1,15 @@
 import React, { useEffect, useRef } from 'react';
+import {useAuth} from '../contexts/AuthContext'
 import { useNavigate } from 'react-router-dom';
 import '../styles/signup.css';
 import { Visibility } from '@mui/icons-material';
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 
 function Login() {
 
-  const auth = getAuth();
   const navigate = useNavigate();
+  const {logInUser} = useAuth();
+
   const passwordRef = useRef();
   const passwordTogglerRef = useRef();
   const emailRef = useRef();
@@ -17,59 +18,41 @@ function Login() {
 
   // password visibility toggler
   function togglePasswordVisibility() {
-    if (passwordRef.current.getAttribute("type") === "password") {
-      passwordRef.current.setAttribute("type", "text");
-    } else {
-      passwordRef.current.setAttribute("type", "password");
-    }
+    const attr = passwordRef.current.getAttribute("type") === "password" ? "text" : "password";
+    passwordRef.current.setAttribute("type", "text");
 
   }
 
   // signin user
-
   function signIn(event) {
     event.preventDefault();
-    submitButtonRef.current.disabled = true;
-    submitButtonRef.current.style.style = '#004182';
 
-    const email = emailRef.current.value;
-    const password = passwordRef.current.value;
+    const emailInput = emailRef.current;
+    const passwordInput = passwordRef.current;
+    const submitButton = submitButtonRef.current
 
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in 
-        const user = userCredential.user;
-        console.log(user)
-        redirectToHome(user);
-        // ...
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
+    submitButton.disabled = true;
+    submitButton.style.background = '#004182';
 
-        submitButtonRef.current.disabled = true;
-        submitButtonRef.current.style.style = '#004182';
+    logInUser(emailInput.value, passwordInput.value, (user) => {
+      // if login successful navigate to home page
+      navigate('/')
 
-        console.log(errorCode)
-        console.log(errorMessage)
+    }, (error) => {
+      // if not successful
+      console.log(error)
 
-        alert('Username or password is invalid')
-      });
-
-
-  }
-  // redirect to home 
-
-  function redirectToHome(user) {
-    if (user) {
-      navigate('/login')
-    }
+      submitButton.disabled = false;
+      submitButton.style.background = '#0A66C2';      
+      alert('Invalid username / password');
+      emailInput.value = '';
+      passwordInput.value = '';
+    });
   }
 
   useEffect(() => {
 
     const passwordToggleIcon = passwordTogglerRef.current;
-
     passwordToggleIcon.addEventListener('click', togglePasswordVisibility);
 
     return function() {
@@ -107,4 +90,4 @@ function Login() {
   )
 }
 
-export default Login
+export default Login;
