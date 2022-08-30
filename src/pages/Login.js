@@ -1,56 +1,82 @@
-import React, {useEffect, useRef} from 'react';
-import '../../styles/signup.css';
-import {  Visibility } from '@mui/icons-material';
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import React, { useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+import '../styles/signup.css';
+import { Visibility } from '@mui/icons-material';
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 
-function Signup() {
+function Login() {
 
+  const auth = getAuth();
+  const navigate = useNavigate();
   const passwordRef = useRef();
   const passwordTogglerRef = useRef();
   const emailRef = useRef();
+  const submitButtonRef = useRef();
 
-  const auth = getAuth();
 
+  // password visibility toggler
   function togglePasswordVisibility() {
-    if(passwordRef.current.getAttribute("type") === "password"){
+    if (passwordRef.current.getAttribute("type") === "password") {
       passwordRef.current.setAttribute("type", "text");
-
-    }else{
+    } else {
       passwordRef.current.setAttribute("type", "password");
     }
 
   }
 
-  function createNewUser(event){
-  event.preventDefault();
+  // signin user
 
-  const email = emailRef.current.value;
-  const password = passwordRef.current.value;
+  function signIn(event) {
+    event.preventDefault();
+    submitButtonRef.current.disabled = true;
+    submitButtonRef.current.style.style = '#004182';
 
-  createUserWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    // Signed in 
-    emailRef.current.value = '';
-    passwordRef.current.value = '';
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
 
-    const user = userCredential.user;
-    console.log(user)
-    
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        console.log(user)
+        redirectToHome(user);
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
 
-    console.log(errorCode)
-    console.log(errorMessage)
-  });
+        submitButtonRef.current.disabled = true;
+        submitButtonRef.current.style.style = '#004182';
+
+        console.log(errorCode)
+        console.log(errorMessage)
+
+        alert('Username or password is invalid')
+      });
+
+
+  }
+  // redirect to home 
+
+  function redirectToHome(user) {
+    if (user) {
+      navigate('/login')
+    }
   }
 
   useEffect(() => {
-    passwordTogglerRef.current.addEventListener('click', togglePasswordVisibility);
 
-  })
+    const passwordToggleIcon = passwordTogglerRef.current;
+
+    passwordToggleIcon.addEventListener('click', togglePasswordVisibility);
+
+    return function() {
+      passwordToggleIcon.removeEventListener('click', togglePasswordVisibility);
+    }
+
+  }, [])
 
   return (
     <div className='signup__page__container'>
@@ -63,16 +89,16 @@ function Signup() {
         <div className="signup__form__container">
           <h2>Sign in</h2>
           <p>Stay updated on your professional world</p>
-          <form className="signup__form" onSubmit={createNewUser}>
-            <input type="text" placeholder='Email*' required ref={emailRef}/>
+          <form className="signup__form" onSubmit={signIn}>
+            <input type="text" placeholder='Email*' required ref={emailRef} />
             <div className="password__field__wrap">
-              <input type="password" placeholder='Password*' required ref={passwordRef}/>
+              <input type="password" placeholder='Password*' required ref={passwordRef} />
               <span ref={passwordTogglerRef}>
                 <Visibility />
               </span>
             </div>
             <a href="#">Forgot Password ?</a>
-            <button type="submit">Sign in</button>
+            <button type="submit" ref={submitButtonRef}>Sign in</button>
           </form>
         </div>
         <p className='signup_link'>New to LinkedIn? Join now <a href="#">Join now</a></p>
@@ -81,4 +107,4 @@ function Signup() {
   )
 }
 
-export default Signup
+export default Login
