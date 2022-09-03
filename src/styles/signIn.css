@@ -1,9 +1,11 @@
 .signup__page__container {
     width: 100%;
     height: 100vh;
-    display: grid;
+    display: flex;
     justify-content: center;
-    background: #fff;
+    flex-direction: column;
+    align-items: center;
+    background: #f3f2ef;
     align-items: center;
 }
 
@@ -17,7 +19,6 @@
 
 .signup__form__container {
     width: 352px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     padding: 24px;
     border-radius: 8px;
     margin: 0 auto;
@@ -45,11 +46,12 @@ form.signup__form {
     width: 100%;
     font-weight: 400;
     color: rgba(0, 0, 0, 0.9);
-    height: 52px;
+    height: 48px;
     padding: 12px 12px 6px;
     border-radius: 4px;
-    font-size: 18px;
+    font-size: 16px;
     margin-top: 20px;
+    border: 1px solid rgba(0,0,0,0.6);
 }
 
 .signup__form button {
@@ -73,6 +75,7 @@ form.signup__form {
 .signup__form button:hover {
     background: #004182 !important;
 }
+
 .signup__form a {
     font-size: 16px;
     display: inline-block;
@@ -110,4 +113,15 @@ form.signup__form {
 
 .password__field__wrap input {
     padding-right: 38px;
+}
+
+.login-page-title {
+    font-size: 32px;
+    line-height: 40px;
+    font-weight: 400;
+    margin-bottom: 40px;
+}
+
+.login__page__container .signup__form button {
+    margin-top: 30px;
 }

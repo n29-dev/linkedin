@@ -3,7 +3,7 @@ import AddPost from './addPost';
 import MainFeedSlider from './mainFeedSlider';
 import { db } from '../../firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
-import { useEffect, useRef } from 'react';
+import { useEffect, useCallback} from 'react';
 import React from 'react';
 const collectionRef = collection(db, 'posts')
 
@@ -12,7 +12,7 @@ function MainFeed() {
 
   const inputRef = React.createRef();
 
-  function addPostHandler(event) {
+  const addPostHandler = useCallback((event) => {
     if (event.key === "Enter") {
       addDoc(collectionRef, {
         uid: '######',
@@ -22,13 +22,14 @@ function MainFeed() {
         created: serverTimestamp()
       })
     }
-  }
+  })
 
+// prob
   useEffect(() => {
     const inpuField = inputRef.current;
     console.log(inputRef.current)
     inpuField.addEventListener('keyup', addPostHandler)
-  })
+  }, [addPostHandler])
 
   return (
     <div className='mainFeed__container'>

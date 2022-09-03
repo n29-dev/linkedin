@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { auth } from "../firebase";
-import { onAuthStateChanged, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, updateCurrentUser, signOut } from "firebase/auth";
+import { onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateCurrentUser, signOut } from "firebase/auth";
 
 // context for storing user information
 const AuthContext = React.createContext();
@@ -14,22 +14,23 @@ function useAuth(){
 function AuthProvider({ children }) {
 
     const [currentUser, setCurrentUser] = useState(auth.currentUser);
+    const [loading, setLoading] = useState(true)
 
     // adding subscribtion for any user state change
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
-            setCurrentUser({...user})
+            setCurrentUser({...user});
+            console.log(user)
+            setLoading(false);
         })
 
     }, [auth])
 
     // create new user
-    async function createNewUser(email, password, username, onSuccess = () => { }, onError = () => { }) {
+    async function createNewUser(email, password, onSuccess = () => { }, onError = () => { }) {
 
         try {
             await createUserWithEmailAndPassword(auth, email, password)
-            // immediatly update username after creation
-            await updateProfile(auth.currentUser, username)
 
             // if user is successfully created onSuccess is invoced
             onSuccess(auth.currentUser)
@@ -71,6 +72,7 @@ function AuthProvider({ children }) {
     return (
         <AuthContext.Provider value={{
             currentUser,
+            loading,
             setCurrentUser,
             createNewUser,
             logInUser,
