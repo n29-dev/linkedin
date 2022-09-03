@@ -19,7 +19,7 @@ function MainFeedSlider() {
         spaceBetween={0}
         slidesPerView={1}
         navigation
-        onSwiper={(swiper) => console.log(swiper)}
+        // onSwiper={(swiper) => {}}
         onSlideChange={() => console.log('slide change')}
       >
         <SwiperSlide>

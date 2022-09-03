@@ -1,26 +1,28 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { auth } from "../firebase";
 import { onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateCurrentUser, signOut } from "firebase/auth";
+import { db } from '../firebase';
+import { doc, getDoc } from "firebase/firestore";
 
 // context for storing user information
 const AuthContext = React.createContext();
 
 // function for accessing context within any component
-function useAuth(){
+function useAuth() {
     return useContext(AuthContext);
-} 
+}
 
 // declarative function for sharing user information between all components
 function AuthProvider({ children }) {
 
-    const [currentUser, setCurrentUser] = useState(auth.currentUser);
+    const [currentUser, setCurrentUser] = useState(null);
+    const [userAdditionalInfo, setUserAdditionalInfo] = useState(null);
     const [loading, setLoading] = useState(true)
 
     // adding subscribtion for any user state change
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
-            setCurrentUser({...user});
-            console.log(user)
+            setCurrentUser({ ...user });
             setLoading(false);
         })
 
@@ -69,10 +71,28 @@ function AuthProvider({ children }) {
         }
     }
 
+    // get user additional info 
+    async function getUserAdditionalData(onSucces, onError) {
+        if (currentUser.uid) {
+            try {
+                const docsSnapshot = await getDoc(doc(db, 'users', currentUser.uid));
+                if (docsSnapshot.exists()) {
+                    const data = docsSnapshot.data();
+                    setUserAdditionalInfo(data);
+                    onSucces(docsSnapshot.data(data))
+                }
+            } catch (error) {
+                onError(error);
+            }
+        }
+    }
+
     return (
         <AuthContext.Provider value={{
             currentUser,
+            additionalInfo: userAdditionalInfo,
             loading,
+            getUserAdditionalData,
             setCurrentUser,
             createNewUser,
             logInUser,
@@ -87,4 +107,4 @@ function AuthProvider({ children }) {
 // export provider and context
 export default AuthProvider;
 
-export {useAuth};
+export { useAuth };

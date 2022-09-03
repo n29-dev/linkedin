@@ -1,7 +1,7 @@
 import React from 'react';
 import { Avatar } from '@mui/material';
 import { InsertComment, Public, Send, Shortcut, ThumbUpOffAlt } from '@mui/icons-material';
-import Button from './Button';
+import Button from '../globals/Button';
 
 function Post({message, userName, userDesignation, timestamp}) {
   return (

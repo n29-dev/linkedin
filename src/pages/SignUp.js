@@ -1,58 +1,67 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext'
 import '../styles/signIn.css';
 import { Visibility } from '@mui/icons-material';
-import {useNavigate} from 'react-router-dom';
+import { db } from '../firebase'
+import { setDoc, doc } from 'firebase/firestore'
 
 function SignUp() {
 
-  const navigate = useNavigate();
   const { createNewUser } = useAuth();
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
-  const emailRef = useRef();
-  const submitButtonRef = useRef();
-
+  const signUpFromRef = useRef();
 
   // toggle password input visibility
   function togglePasswordVisibility(ref) {
+
     const attr = ref.current.getAttribute("type") === "password" ? "text" : "password";
     ref.current.setAttribute("type", attr);
   }
+
+  useEffect(() => {
+    signUpFromRef.current.addEventListener('submit', userSignUp);
+  })
 
   // create new user
   function userSignUp(event) {
     event.preventDefault();
 
-    const emailField = emailRef.current;
-    const passwordField = passwordRef.current;
-    const confirmPasswordField = confirmPasswordRef.current;
-    const submitButton = submitButtonRef.current
+    const form = event.target;
+    form.submit.disabled = true;
+    form.submit.style.background = '#004182';
 
-    submitButton.disabled = true;
-    submitButton.style.background = '#004182';
+    // data to store in firebase database
+    const data = {
+      username: form.username.value,
+      designation: form.designation.value
+    }
 
     // if passwords not match
-    if (passwordField.value !== confirmPasswordField.value) {
+    if (form.password.value !== form.confirmPassword.value) {
       alert('Your passwords do not match');
-      passwordField.value = '';
-      confirmPasswordField.value = '';
+      form.password.value = '';
+      form.confirmPassword.value = '';
     }
 
     // else
-    createNewUser(emailField.value, passwordField.value,
-      // sucess
-      () => {
-        navigate('/');
-
+    createNewUser(form.email.value, form.password.value,
+      // on sucess
+      async (user) => {
+        setDoc(doc(db, 'users', user.uid), data);
       },
-      // error
+      // on error
       (error) => {
         console.log(error)
-        submitButton.disabled = false;
-        submitButton.style.background = '#0A66C2';
+        form.submit = false;
+        form.submit.style.background = '#0A66C2';
       })
   }
+
+
+  // add additional info
+
+  // add 
 
   return (
     <div className='signup__page__container login__page__container'>
@@ -66,23 +75,25 @@ function SignUp() {
         <div className="signup__form__container">
           <h2>Sign Up</h2>
           <p>Stay updated on your professional world</p>
-          <form className="signup__form" onSubmit={userSignUp}>
-            <input type="text" placeholder='Email*' required ref={emailRef} />
+          <form className="signup__form" ref={signUpFromRef}>
+          <input type="text" placeholder='Username*' name="username"/>
+            <input type="text" placeholder='Designation*' name="designation"/>
+            <input type="text" placeholder='Email*' name="email" />
             <div className="password__field__wrap">
-              <input type="password" placeholder='Password*' required ref={passwordRef} />
+              <input type="password" placeholder='Password*' name='password' ref={passwordRef}/>
               <span onClick={() => { togglePasswordVisibility(passwordRef) }}>
                 <Visibility />
               </span>
             </div>
             <div className="password__field__wrap">
-              <input type="password" placeholder='Confirm Password*' required ref={confirmPasswordRef} />
+              <input type="password" placeholder='Confirm Password*' name='confirmPassword' ref={confirmPasswordRef}/>
               <span onClick={() => { togglePasswordVisibility(confirmPasswordRef) }}>
                 <Visibility />
               </span>
             </div>
-            <button type="submit" ref={submitButtonRef}>Sign up</button>
+            <button type="submit" name='submit'>Sign up</button>
           </form>
-        </div>
+        </div> 
       </div>
     </div>
   )

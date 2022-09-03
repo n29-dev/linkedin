@@ -1,8 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 import {useAuth} from '../contexts/AuthContext'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
 import '../styles/signIn.css';
 import { Visibility } from '@mui/icons-material';
+
 
 
 function SignIn() {
@@ -34,7 +35,7 @@ function SignIn() {
     submitButton.disabled = true;
     submitButton.style.background = '#004182';
 
-    logInUser(emailInput.value, passwordInput.value, (user) => {
+    logInUser(emailInput.value, passwordInput.value,  (user) => {
       // if login successful navigate to home page
       navigate('/')
 
@@ -84,7 +85,7 @@ function SignIn() {
             <button type="submit" ref={submitButtonRef}>Log in</button>
           </form>
         </div>
-        <p className='signup_link'>New to LinkedIn? Join now <a href="#">Join now</a></p>
+        <p className='signup_link'>New to LinkedIn? <NavLink to={'/signup'}>Join now</NavLink></p>
       </div>
     </div>
   )
