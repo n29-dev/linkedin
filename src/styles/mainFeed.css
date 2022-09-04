@@ -5,6 +5,7 @@
 .addPost__container {
     background: #fff;
     padding: 14px 20px;
+    padding-bottom: 8px;
     border: 1px solid lightgray;
     border-radius: 10px;
 }
@@ -39,7 +40,13 @@
 
 .addPost__options__container .button {
     align-items: center;
-    justify-content: start;
+    justify-content: center;
+    padding: 10px 0;
+    border-radius: 5px;
+}
+
+.addPost__options__container .button:hover {
+    background: whitesmoke;
 }
 
 .addPost__options__container .button .button__title {

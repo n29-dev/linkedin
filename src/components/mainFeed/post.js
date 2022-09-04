@@ -3,9 +3,18 @@ import { Avatar } from '@mui/material';
 import { InsertComment, Public, Send, Shortcut, ThumbUpOffAlt } from '@mui/icons-material';
 import Button from '../globals/Button';
 
-function Post({message, userName, userDesignation, timestamp}) {
+
+function Post({message, userName, userDesignation, created}) {
+
+
+let createdDate;
+
+if(typeof created === 'object'){
+    createdDate = created.toDate().toString().slice(4, 10); 
+}
+
   return (
-    <div>
+    <div className='single-post'>
         <div className='postMeta'>
             <div className="user__avatar">
                 <Avatar/>
@@ -14,7 +23,7 @@ function Post({message, userName, userDesignation, timestamp}) {
                 <h4>{userName}</h4>
                 <p>{userDesignation}</p>
                 <div className='timestamp__wrap'>
-                    <span>{timestamp}</span>
+                    <span>{createdDate}</span>
                     <Public/>
                 </div>
             </div>
